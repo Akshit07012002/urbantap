@@ -152,17 +152,50 @@ const Profile = ({ user }) => {
       <div className="mt-5">
         <h2 className="text-xl font-medium">Properties available for sale</h2>
 
-        {user.properties.slice(0, showAllProperties ? user.properties.length : 2).map((property, index) => (
+        {user.properties
+          .slice(0, showAllProperties ? user.properties.length : 2)
+          .map((property, index) => (
             <PropertyCard key={index} property={property} />
-        ))}
+          ))}
 
-        {!showAllProperties && user.properties.length > 2 && (
-            <button className="font-medium font-inter mt-2 bg-blue-200" onClick={() => setShowAllProperties(true)}>
-                View More
-            </button>
-        )}
+            {!showAllProperties && user.properties.length > 2 && (
+                <div
+                    className="flex flex-row justify-center align-middle my-3"
+                    style={{
+                        backgroundColor: "#D5F6FB",
+                        borderRadius: 15,
+                        padding: "15px 138px",
+                    }}
+                >
+                    <button
+                        className="font-medium font-inter"
+                        onClick={() => setShowAllProperties(true)}
+                    >
+                        <h2 className="">View {user.properties.length - 2} More</h2>
+                    </button>
+                </div>
+            )}
+
+            {showAllProperties && (
+                <div
+                    className="flex flex-row justify-center align-middle my-3"
+                    style={{
+                        backgroundColor: "#D5F6FB",
+                        borderRadius: 15,
+                        padding: "15px 138px",
+                    }}
+                >
+                    <button
+                        className="font-medium font-inter"
+                        onClick={() => setShowAllProperties(false)}
+                    >
+                        <h2 className="">View Less</h2>
+                    </button>
+                </div>
+            )}
+        </div>
+
         
-      </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import contact from "../assets/icons/contact.svg";
 import call from "../assets/icons/call.svg";
 import { useState } from "react";
 import PropertyCard from "../components/ui/cards/PropertyCard";
+import ContactCard from "../components/ui/cards/ContactCard";
 
 const Profile = ({ user }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -158,44 +159,48 @@ const Profile = ({ user }) => {
             <PropertyCard key={index} property={property} />
           ))}
 
-            {!showAllProperties && user.properties.length > 2 && (
-                <div
-                    className="flex flex-row justify-center align-middle my-3"
-                    style={{
-                        backgroundColor: "#D5F6FB",
-                        borderRadius: 15,
-                        padding: "15px 138px",
-                    }}
-                >
-                    <button
-                        className="font-medium font-inter"
-                        onClick={() => setShowAllProperties(true)}
-                    >
-                        <h2 className="">View {user.properties.length - 2} More</h2>
-                    </button>
-                </div>
-            )}
+        {!showAllProperties && user.properties.length > 2 && (
+          <div
+            className="flex flex-row justify-center align-middle my-3"
+            style={{
+              backgroundColor: "#D5F6FB",
+              borderRadius: 15,
+              padding: "15px 138px",
+            }}
+          >
+            <button
+              className="font-medium font-inter"
+              onClick={() => setShowAllProperties(true)}
+            >
+              <h2 className="">View {user.properties.length - 2} More</h2>
+            </button>
+          </div>
+        )}
 
-            {showAllProperties && (
-                <div
-                    className="flex flex-row justify-center align-middle my-3"
-                    style={{
-                        backgroundColor: "#D5F6FB",
-                        borderRadius: 15,
-                        padding: "15px 138px",
-                    }}
-                >
-                    <button
-                        className="font-medium font-inter"
-                        onClick={() => setShowAllProperties(false)}
-                    >
-                        <h2 className="">View Less</h2>
-                    </button>
-                </div>
-            )}
-        </div>
+        {showAllProperties && (
+          <div
+            className="flex flex-row justify-center align-middle my-3"
+            style={{
+              backgroundColor: "#D5F6FB",
+              borderRadius: 15,
+              padding: "15px 138px",
+            }}
+          >
+            <button
+              className="font-medium font-inter"
+              onClick={() => setShowAllProperties(false)}
+            >
+              <h2 className="">View Less</h2>
+            </button>
+          </div>
+        )}
+      </div>
 
-        
+      {/* Contact Info */}
+      <div className="my-5">
+        <h2 className="text-xl font-medium">Contact Info</h2>
+        <ContactCard contact={user.contact}/>
+      </div>
     </div>
   );
 };

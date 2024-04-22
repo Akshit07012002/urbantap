@@ -12,10 +12,17 @@ const sampleUser = {
   name: "Parvez Sheikh",
   designation: "Real Estate Agent",
   company: "Sobha Realty",
-  description: "As a dedicated Real Estate Agent at Sobha Realty, I specialize in helping clients with locating, buying, and selling properties. I am a RERA-certified agent and have been in the industry for over 5 years. I am committed to providing the best service to my clients and ensuring that they have a smooth and stress-free experience. Contact me today to learn more about how I can help you with your real estate needs.",
-  contact: "9876543210",
+  description:
+    "As a dedicated Real Estate Agent at Sobha Realty, I specialize in helping clients with locating, buying, and selling properties. I am a RERA-certified agent and have been in the industry for over 5 years. I am committed to providing the best service to my clients and ensuring that they have a smooth and stress-free experience. Contact me today to learn more about how I can help you with your real estate needs.",
+  contact: {
+    phone: "523644498",
+    email: "parvez@sobha.com",
+    instagram: "@parvez_sobha",
+    linkedin: "linkedin.com/in/parvez",
+    whatsapp: "523644498",
+  },
   experience: "12 years 4 months",
-  languages: [ "Arabic", "English", "Hindi"],
+  languages: ["Arabic", "English", "Hindi"],
   properties: [
     {
       title: "5 BHK",
@@ -41,7 +48,6 @@ const sampleUser = {
       company: "Sobha Realty",
       image: one_bhk,
     },
-  
   ],
 };
 

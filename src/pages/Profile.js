@@ -9,6 +9,8 @@ import PropertyCard from "../components/ui/cards/PropertyCard";
 import ContactCard from "../components/ui/cards/ContactCard";
 
 const Profile = ({ user }) => {
+  console.info("Profile");
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [showAllProperties, setShowAllProperties] = useState(false);

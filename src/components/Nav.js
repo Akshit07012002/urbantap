@@ -10,7 +10,7 @@ const NavLinks = () => {
     <>
       <NavLink
         exact
-        to="/"
+        to="/home"
         activeclassname="active"
         style={({ isActive }) => {
           return isActive ? { color: "green" } : {};

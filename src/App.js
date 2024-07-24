@@ -7,6 +7,14 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import five_bhk from "./assets/5bhk.svg";
 import one_bhk from "./assets/1bhk.svg";
+import { useAuth } from "./contexts/authContext";
+import Login from "./pages/auth/Login";
+import { AuthProvider } from "./contexts/authContext";
+import { useEffect, useState } from "react";
+import { auth } from "./firebase/firebase";
+import { Navigate } from "react-router-dom";
+import Register from "./pages/auth/Register";
+import Nav from "./components/Nav";
 
 const sampleUser = {
   name: "Parvez Sheikh",
@@ -52,15 +60,42 @@ const sampleUser = {
 };
 
 function App() {
+  // const { userLoggedIn } = useAuth();
+
+  // console.info("isLoggedIn", userLoggedIn);
+
+  
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+  });
+
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/profile" element={<Profile user={sampleUser} />} />
-      </Routes>
+      <AuthProvider>
+        {/* {user && <Header />} */}
+        <Header />
+        <Routes>
+          {/* {userLoggedIn ? ( */}
+            {/* <Route path="/" element={<Home />} /> */}
+          {/* ) : ( */}
+            {/* <Route path="/" element={<Login />} /> */}
+          {/* )} */}
+          <Route
+                path="/"
+                element={user ? <Navigate to="/home" /> : <Navigate to="/login" />}
+              />
+          <Route path="/about" element={<About />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile user={sampleUser} />} />
+        </Routes>
+      </AuthProvider>
     </>
   );
 }
